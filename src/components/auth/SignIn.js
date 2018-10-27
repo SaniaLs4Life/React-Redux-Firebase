@@ -5,28 +5,20 @@ class SignIn extends Component {
   constructor(props) {
     super(props)
     this.handleLogin = this.handleLogin.bind(this)
-    this.handleOnChangeEmail = this.handleOnChangeEmail.bind(this)
-    this.handleOnChangePassword = this.handleOnChangePassword.bind(this)
+    this.handleChange = this.handleChange.bind(this)
     this.state = {
-      username:'',
+      email:'',
       password: ''
     }
   }
   handleLogin(e) {
     e.preventDefault()
-    alert(this.state.username + ' ' + this.state.password)
+    console.log(this.state)
   }
-  handleOnChangeEmail(e) {
+  handleChange(e) {
     e.preventDefault()
     this.setState( {
-      username: [e.target.value]
-    })
-
-  }
-  handleOnChangePassword(e) {
-    e.preventDefault()
-    this.setState( {
-      password: [e.target.value]
+      [e.target.id]: e.target.value
     })
 
   }
@@ -38,10 +30,10 @@ class SignIn extends Component {
             <Form onSubmit={this.handleLogin}>
               <FormGroup>
               <h1>Sign in</h1>
-                <Input type="email" name="email" id="exampleEmail" value={this.state.username} onChange={this.handleOnChangeEmail} placeholder="Email" />
+                <Input type="email" name="email" id="email"  onChange={this.handleChange} placeholder="Email" />
               </FormGroup>
               <FormGroup>
-                <Input type="password" name="password" id="examplePassword" value={this.state.password} onChange={this.handleOnChangePassword} placeholder="Password" />
+                <Input type="password" name="password" id="password"  onChange={this.handleChange} placeholder="Password" />
               </FormGroup>
               <Button color="dark">Login</Button>
             </Form>

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import Menu from './components/Menu';
+import Menu from './components/layout/Menu';
 import {
   BrowserRouter,
-  Redirect,
   Route
 } from 'react-router-dom';
-import Dashboard from './components/Dashboard'
-import SignIn from './components/SignIn'
-import SignUp from './components/SignUp'
+import Dashboard from './components/dashboard/Dashboard'
+import SignIn from './components/auth/SignIn'
+import SignUp from './components/auth/SignUp'
+import ProjectDetail from './components/projects/ProjectDetail'
+import CreateProject from './components/projects/CreateProject'
 
 class App extends Component {
   render() {
@@ -19,6 +20,8 @@ class App extends Component {
             <Route exact path="/" component={Dashboard} />
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
+            <Route path="/project/:id" component={ProjectDetail} />
+            <Route path="/newproject" component={CreateProject} />
           </div>
           </div>
         </BrowserRouter>
