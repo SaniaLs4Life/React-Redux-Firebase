@@ -9,6 +9,7 @@ import {
 import { NavLink } from 'react-router-dom'
 import SignedIn from './SignedIn'
 import SignedOut from './SignedOut';
+import { connect } from 'react-redux'
 
 
 
@@ -27,19 +28,25 @@ class Menu extends Component {
         });
     }
     render() {
+        const { auth } = this.props
+        const links = auth.uid ? <SignedIn /> : <SignedOut />
         return (
             <div>
                 <Navbar color="dark" dark expand="md">
                     <NavbarBrand href="/"><NavLink className="nav-link" style={{color:'#FFF', fontWeight:'bold', fontSize:'22px'}} to="/">MICAZOOK</NavLink></NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
-                        <SignedIn />
-                        <SignedOut />
+                        { links }
+                        
                     </Collapse>
                 </Navbar>
             </div>
         )
     }
 }
-
-export default Menu
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+export default connect(mapStateToProps)(Menu)

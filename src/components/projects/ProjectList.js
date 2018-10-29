@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, CardHeader } from 'reactstrap'
 import ProjectSummary from './ProjectSummary'
+import { Link } from 'react-router-dom'
 
 const ProjectList = ({ projects }) => {
     console.log(projects + ' 1')
@@ -10,7 +11,9 @@ const ProjectList = ({ projects }) => {
             {
                 projects && projects.map(project => {
                     return (
-                        <ProjectSummary project={project} key={project.id} />
+                        <Link to={'/project/'+project.id} key={project.id}>
+                            <ProjectSummary project={project} key={project.id} />
+                        </Link>
                     )
                 })
             }

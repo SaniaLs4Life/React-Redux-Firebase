@@ -9,9 +9,6 @@ function SignedOut() {
     return (
         <Nav className="ml-auto" navbar>
             <NavItem>
-                <NavLink className="nav-link" to="/">Dashboard</NavLink>
-            </NavItem>
-            <NavItem>
                 <NavLink className="nav-link" to="/signin">Sign in</NavLink>
             </NavItem>
             <NavItem>
