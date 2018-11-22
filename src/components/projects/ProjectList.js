@@ -4,7 +4,6 @@ import ProjectSummary from './ProjectSummary'
 import { Link } from 'react-router-dom'
 
 const ProjectList = ({ projects }) => {
-    console.log(projects + ' 1')
     return (
         <Card>
             <CardHeader><h4>Projects</h4></CardHeader>

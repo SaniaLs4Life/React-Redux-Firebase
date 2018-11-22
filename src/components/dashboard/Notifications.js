@@ -7,7 +7,7 @@ class Notifications extends Component {
         const { notifications } = this.props;
         return (
             <Card>
-                <CardHeader><h4>Notifications</h4></CardHeader>
+                <CardHeader><h4>Notifications <Badge style={{fontSize:'12px'}} color="primary">{ notifications && notifications.length }</Badge></h4></CardHeader>
                 <CardBody>
                     {
                             notifications && notifications.map(item => {

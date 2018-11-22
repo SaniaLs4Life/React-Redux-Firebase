@@ -21,13 +21,11 @@ function ProjectDetail(props) {
             <Card className="mt-5">
               <CardBody>
                 <CardTitle>{project.title}</CardTitle>
-                <CardSubtitle>Posted by <b>{project.authorFullname} {moment(project.createdAt.toDate()).calendar()}</b></CardSubtitle>
+                <CardSubtitle>Posted by <b>{project.authorFullname} <br /> {moment(project.createdAt.toDate()).calendar()}</b></CardSubtitle>
               </CardBody>
               <img width="100%" src="https://cdn-images-1.medium.com/max/1600/1*xYBswt7GarbvBnEP6TCQag.png" alt="Card cap" />
               <CardBody>
                 <CardText>{project.content}</CardText>
-                <CardLink href="#">Card Link</CardLink>
-                <CardLink href="#">Another Link</CardLink>
               </CardBody>
             </Card>
           </Col>

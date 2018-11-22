@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Menu from './components/layout/Menu';
+import Menu2 from './components/layout/Menu';
 import {
   BrowserRouter,
   Route
@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Menu />
+          <Menu2 />
           <div>
             <Route exact path="/" component={Dashboard} />
             <Route path="/signin" component={SignIn} />
