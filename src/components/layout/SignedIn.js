@@ -15,7 +15,7 @@ class SignedIn extends Component {
     signedOut() {
         this.props.signOut()
     }
-    render() {
+    render() {        
         return (
             <Nav className="ml-auto" navbar>
                 <NavItem>
@@ -28,7 +28,12 @@ class SignedIn extends Component {
                     <DropdownToggle nav caret>
                     {this.props.profile.fullName}
                                     </DropdownToggle>
-                    <DropdownMenu right>
+                    <DropdownMenu right>   
+                    <NavLink to='/profile'>              
+                        <DropdownItem>     
+                            Profile                     
+                        </DropdownItem>                        
+                        </NavLink> 
                         <DropdownItem onClick={this.signedOut.bind(this)}>
                             Logout
                         </DropdownItem>
