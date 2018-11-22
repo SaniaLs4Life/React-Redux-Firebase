@@ -36,8 +36,7 @@ class Menu extends Component {
                     <NavbarBrand href="/"><NavLink className="nav-link" style={{color:'#FFF', fontWeight:'bold', fontSize:'22px'}} to="/">MICAZOOK</NavLink></NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
-                        { links }
-                        
+                        { links }                        
                     </Collapse>
                 </Navbar>
             </div>
@@ -45,7 +44,6 @@ class Menu extends Component {
     }
 }
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         auth: state.firebase.auth,
         profile: state.firebase.profile

@@ -6,22 +6,34 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
+import Spinner from '../spinner/Spinner'
 
 class Dashboard extends Component {
   render() {
     const { projects, auth, notifications } = this.props
     if(!auth.uid) return <Redirect to='/signin' />
+    if(projects && notifications) {
+      return (
+        <Container >
+          <Row>
+            <Col className="mt-5" xs="12" sm="12" md="8">
+              <ProjectList projects={projects} />
+            </Col>
+            <Col className="mt-5" xs="12" sm="12" md="4">
+              <Notifications notifications={notifications} />
+            </Col>
+          </Row>
+        </Container>
+      )
+    }
     return (
-      <Container >
+      <div>
         <Row>
-          <Col className="mt-5" xs="12" sm="12" md="8">
-            <ProjectList projects={projects} />
-          </Col>
-          <Col className="mt-5" xs="12" sm="12" md="4">
-            <Notifications notifications={notifications} />
+          <Col className="m-auto" sm="1">
+            <Spinner />
           </Col>
         </Row>
-      </Container>
+      </div>
     )
   }
 }

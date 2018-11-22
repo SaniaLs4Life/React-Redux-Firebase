@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {
-  Card, CardText, CardBody, CardLink, Row, Col,
+  Card, CardText, CardBody, Row, Col,
   CardTitle, CardSubtitle
 } from 'reactstrap';
 import { firestoreConnect } from 'react-redux-firebase'
