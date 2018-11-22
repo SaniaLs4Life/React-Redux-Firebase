@@ -1,30 +1,24 @@
 import React, { Component } from 'react'
 import { Alert, Badge, Card, CardHeader, CardBody } from 'reactstrap'
+import moment from 'moment'
+
 class Notifications extends Component {
     render() {
+        const { notifications } = this.props;
         return (
             <Card>
                 <CardHeader><h4>Notifications</h4></CardHeader>
                 <CardBody>
-                    <Alert color="light">
-                        Hakan GENC joined the party <br />
-                        <Badge color="warning">5 hours ago</Badge>
-                    </Alert>
-                    <Alert color="light">
-                        Dapibus ac facilisis in
-                5 hours ago  <br />
-                        <Badge color="warning">5 hours ago</Badge>
-                    </Alert>
-                    <Alert color="light">
-                        Dapibus ac facilisis in
-                5 hours ago  <br />
-                        <Badge color="warning">5 hours ago</Badge>
-                    </Alert>
-                    <Alert color="light">
-                        Dapibus ac facilisis in
-                5 hours ago  <br />
-                        <Badge color="warning">5 hours ago</Badge>
-                    </Alert>
+                    {
+                            notifications && notifications.map(item => {
+                            return (                                
+                                <Alert color="light" key={item.id}>
+                                    <b>{item.user}</b> { item.content} <br />
+                                    <Badge color="warning">{moment(item.time.toDate()).fromNow()}</Badge>
+                                </Alert>
+                            )
+                        })
+                    }
                 </CardBody>
             </Card>
         )
@@ -32,4 +26,4 @@ class Notifications extends Component {
 
 }
 
-export default Notifications
+export default Notifications;

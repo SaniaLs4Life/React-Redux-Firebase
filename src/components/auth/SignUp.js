@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Button, Form, FormGroup, Input } from 'reactstrap';
+import { Container, Row, Col, Button, Form, FormGroup, Input, Alert } from 'reactstrap';
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { signUp } from '../../store/actions/authActions';
 
 class SignUp extends Component {
   constructor(props) {
@@ -24,9 +25,10 @@ class SignUp extends Component {
   handleRegister(e) {
     e.preventDefault()
     console.log(this.state)
+    this.props.signUp(this.state);
   }
   render() {
-    const { auth } = this.props
+    const { auth, authError } = this.props
     if (auth.uid) return <Redirect to='/' />
     return (
       <Container className="mt-3">
@@ -44,6 +46,11 @@ class SignUp extends Component {
                 <Input type="password" name="password" id="password"  onChange={this.handleChange} placeholder="Enter your password" />
               </FormGroup>
               <Button color="dark">Register</Button>
+              {authError ?
+                <Alert className="mt-2" color="danger">
+                { authError }
+                </Alert>
+                : null}
             </Form>
           </Col>
         </Row>
@@ -54,8 +61,15 @@ class SignUp extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    authError: state.auth.authError
   }
 }
 
-export default connect(mapStateToProps)(SignUp)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (newUser) => dispatch(signUp(newUser))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

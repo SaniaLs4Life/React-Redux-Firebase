@@ -8,6 +8,7 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import Spinner from '../spinner/Spinner'
 import { Redirect } from 'react-router-dom'
+import moment from 'moment'
 
 function ProjectDetail(props) {
   const { project, auth } = props
@@ -20,7 +21,7 @@ function ProjectDetail(props) {
             <Card className="mt-5">
               <CardBody>
                 <CardTitle>{project.title}</CardTitle>
-                <CardSubtitle>Posted by <b>{project.authorFullname}</b></CardSubtitle>
+                <CardSubtitle>Posted by <b>{project.authorFullname} {moment(project.createdAt.toDate()).calendar()}</b></CardSubtitle>
               </CardBody>
               <img width="100%" src="https://cdn-images-1.medium.com/max/1600/1*xYBswt7GarbvBnEP6TCQag.png" alt="Card cap" />
               <CardBody>

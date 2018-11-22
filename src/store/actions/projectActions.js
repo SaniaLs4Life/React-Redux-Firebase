@@ -4,10 +4,12 @@ export const createProject = (project) => {
         getFirestore
     }) => {
         const firestore = getFirestore()
+        const profile = getState().firebase.profile
+        const authorId = getState().firebase.auth.uid
         firestore.collection('projects').add({
                 ...project,
-                authorFullname: 'Hakan GENC',
-                authorID: '12',
+                authorFullname: profile.fullName,
+                authorID: authorId,
                 createdAt: new Date()
             })
             .then(() => {

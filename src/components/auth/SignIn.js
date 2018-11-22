@@ -16,7 +16,6 @@ class SignIn extends Component {
   }
   handleLogin(e) {
     e.preventDefault()
-    console.log(this.state)
     this.props.signIn(this.state)
   }
   handleChange(e) {

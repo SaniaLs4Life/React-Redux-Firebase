@@ -26,7 +26,7 @@ class SignedIn extends Component {
                 </NavItem>
                 <UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav caret>
-                        Hakan GENC
+                    {this.props.profile.fullName}
                                     </DropdownToggle>
                     <DropdownMenu right>
                         <DropdownItem onClick={this.signedOut.bind(this)}>
